@@ -65,25 +65,24 @@ for (id=0; id< posts.length; id++) {
 console.log(posts[0]['author'].name)
 
 function publish(){
-   const feed = document.querySelector('posts-list');
-   let singlePost = document.createElement('div');
-   singlePost.classList.add('post');
-   feed.append(singlePost);
+    let feed = document.getElementById('container');
+    let singlePost = document.createElement('div');
+    singlePost.classList.add('post');
+    feed.append(singlePost);
+//  ********** HEADER **********
 
-// ********** HEADER **********
-
-   let header = document.createElement('div');
-   header.classList.add('post__header');
-   header.innerHTML = `
-    <div class="post-meta">                    
-        <div class="post-meta__icon">
-            <img class="profile-pic" src="${posts[id].media}" alt="${posts[id]['author'].name}">                    
-        </div>
-        <div class="post-meta__data">
-            <div class="post-meta__author">${posts[id]['author'].name}</div>
-            <div class="post-meta__time">4 mesi fa</div>
-        </div>                    
-    </div>`;
+    let header = document.createElement('div');
+    header.classList.add('post__header');
+    header.innerHTML = `
+        <div class="post-meta">                    
+            <div class="post-meta__icon">
+                <img class="profile-pic" src="${posts[id].author.image}" alt="${posts[id]['author'].name}">                    
+            </div>
+            <div class="post-meta__data">
+                <div class="post-meta__author">${posts[id]['author'].name}</div>
+                <div class="post-meta__time">4 mesi fa</div>
+            </div>                    
+        </div>`;
     singlePost.append(header);
 //  ********** CONTENT **********
     let text = document.createElement('div');
@@ -93,7 +92,7 @@ function publish(){
 //  ********** IMG **********
     let img = document.createElement('div');
     img.classList.add('post__image');
-    img.innerHTML = posts[id].media;
+    img.innerHTML = `<img src='${posts[id].media}' alt=""></img>`;
     singlePost.append(img);
 
 //  ********** FOOTER **********
